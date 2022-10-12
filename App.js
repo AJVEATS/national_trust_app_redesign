@@ -1,33 +1,44 @@
-import * as React from 'react';
-import MapView from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Button, SafeAreaView, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import MarkerComponent from './MarkerComponents';
 
-// for (var key in nationalTrustPlaces) {
-//   // console.log(`name: ${nationalTrustPlaces[key]['title']} - latitude: ${nationalTrustPlaces[key]['location']['latitude']}, longitude: ${nationalTrustPlaces[key]['location']['longitude']}`);
-// }
+function Home() {
+  return (
+    <SafeAreaView style={styles.homeContainer}>
+      <MarkerComponent />
+    </SafeAreaView>
+  )
+}
+
+function SecondScreen() {
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden />
+      <Text>Second screen</Text>
+    </View>
+  )
+}
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator useLegacyImplementation>
+      <Drawer.Screen name="Discover" component={Home} inactiveBackgroundColor={'blue'} />
+      <Drawer.Screen name="Second Screen" component={SecondScreen} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App() {
 
   return (
-    <SafeAreaView style={styles.container}>
-      <MarkerComponent />
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 50.736055,
-          longitude: -1.892924,
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.04,
-        }}>
-        <Marker coordinate={{
-          latitude: nationalTrustPlaces[1]['location']['latitude'],
-          longitude: nationalTrustPlaces[1]['location']['longitude'],
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.04,
-        }} />
-      </MapView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <MyDrawer />
+    </NavigationContainer>
   );
 }
 
@@ -37,12 +48,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
-  map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    alignContent: 'center',
+  homeContainer: {
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
+    alignContent: 'center',
+  },
+  home: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 20,
   },
 });
