@@ -27,7 +27,12 @@ const MarkerComponent = () => {
                 longitudeDelta: 0.04,
             }}>
             {Object.values(nationalTrustPlaces).map(index => {
-                return <Marker key={index.id} coordinate={{ latitude: index.location.latitude, longitude: index.location.longitude }} icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/round-pushpin_1f4cd.png' }} />
+                return <Marker
+                    key={index.id}
+                    coordinate={{ latitude: index.location.latitude, longitude: index.location.longitude }}
+                    title={index.title}
+                    description={index.description}
+                    icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }} />
             })}
         </MapView>
     )
