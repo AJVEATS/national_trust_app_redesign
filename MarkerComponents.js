@@ -2,10 +2,10 @@ import React from 'react';
 import { Text, StyleSheet, Dimensions, KeyboardAvoidingView } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from "react-native-maps";
-import './nt_json.json';
+import './nt_places.json';
 
 const MarkerComponent = () => {
-    let nationalTrustPlaces = require('./nt_json.json');
+    let nationalTrustPlaces = require('./nt_places.json');
 
     const styles = StyleSheet.create({
         map: {

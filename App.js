@@ -4,8 +4,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import MarkerComponent from './MarkerComponents';
+import ListViewComponent from './ListViewComponent';
 
-function Home() {
+function MapView() {
   return (
     <SafeAreaView style={styles.homeContainer}>
       <MarkerComponent />
@@ -13,12 +14,12 @@ function Home() {
   )
 }
 
-function SecondScreen() {
+function ListView() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.listViewContainer}>
       <StatusBar hidden />
-      <Text>Second screen</Text>
-    </View>
+      <ListViewComponent />
+    </SafeAreaView>
   )
 }
 
@@ -27,8 +28,8 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Discover" component={Home} inactiveBackgroundColor={'blue'} />
-      <Drawer.Screen name="Second Screen" component={SecondScreen} />
+      <Drawer.Screen name="Map" component={MapView} inactiveBackgroundColor={'blue'} />
+      <Drawer.Screen name="List" component={ListView} />
     </Drawer.Navigator>
   );
 }
@@ -54,6 +55,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     alignContent: 'center',
+  },
+  listViewContainer: {
+    flex: 1,
+
   },
   home: {
     justifyContent: 'center',
