@@ -1,19 +1,17 @@
-import { StyleSheet, View, ScrollView, Image, Text, FlatList, ListRenderItem } from 'react-native'
+import { StyleSheet, View, Image, Text, FlatList, Pressable } from 'react-native'
 import React from 'react'
 
-import './nt_places.json';
-import PlaceCardComponent from './PlaceCardComponent';
+import '../data/nt_places.json';
 
 const ListViewComponent = () => {
 
-    const nationalTrustPlaces = require('./nt_places.json');
+    const nationalTrustPlaces = require('../data/nt_places.json');
     const placesArray = Object.values(nationalTrustPlaces);
 
 
     const placesRenderItem = ({ item }) => {
         return (
-
-            <View key={item} style={styles.placeCard}>
+            <Pressable key={item} style={styles.placeCard}>
                 <View style={styles.placeImageContainer}>
                     <Image style={styles.placeImage} source={{ uri: item.imageUrl }} />
                 </View>
@@ -22,7 +20,7 @@ const ListViewComponent = () => {
                     <Text>{item.subTitle}</Text>
                     <Text>{item.description}</Text>
                 </View>
-            </View>
+            </Pressable>
         )
     };
 
@@ -38,19 +36,16 @@ const ListViewComponent = () => {
 export default ListViewComponent
 
 const styles = StyleSheet.create({
-    listViewComponent: {
-        flex: 1,
-        alignContent: 'center',
-        backgroundColor: 'lightgray',
-    },
     placeCard: {
         width: '100%',
-        marginTop: '2%',
+        marginTop: 7,
         height: 300,
+        alignItems: 'center',
     },
     placeImageContainer: {
-        width: '100%',
-        height: '75%',
+        width: '95%',
+        height: 200,
+        borderTopEndRadius: 10
     },
     placeImage: {
         width: '100%',
@@ -58,8 +53,8 @@ const styles = StyleSheet.create({
     },
     placeTextContainer: {
         width: '95%',
-        height: '25%',
-        marginHorizontal: '2.5%',
+        height: 100,
+        marginHorizontal: 2,
         paddingHorizontal: 10,
         backgroundColor: 'white',
         // transform: [{ translateY: -10 }],

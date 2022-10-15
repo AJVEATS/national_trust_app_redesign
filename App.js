@@ -3,13 +3,13 @@ import { StyleSheet, Button, SafeAreaView, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import MarkerComponent from './MarkerComponents';
-import ListViewComponent from './ListViewComponent';
+import MapComponent from './Components/MapComponents';
+import ListComponent from './Components/ListComponent';
 
 function MapView() {
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <MarkerComponent />
+      <MapComponent />
     </SafeAreaView>
   )
 }
@@ -18,7 +18,7 @@ function ListView() {
   return (
     <SafeAreaView style={styles.listViewContainer}>
       <StatusBar hidden />
-      <ListViewComponent />
+      <ListComponent />
     </SafeAreaView>
   )
 }
