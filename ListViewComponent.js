@@ -1,37 +1,46 @@
-import { StyleSheet, View, ScrollView, Image, Text } from 'react-native'
+import { StyleSheet, View, ScrollView, Image, Text, FlatList, ListRenderItem } from 'react-native'
 import React from 'react'
 
 import './nt_places.json';
 import PlaceCardComponent from './PlaceCardComponent';
 
 const ListViewComponent = () => {
-    let nationalTrustPlaces = require('./nt_places.json')
+
+    const nationalTrustPlaces = require('./nt_places.json');
+    const placesArray = Object.values(nationalTrustPlaces);
+
+
+    const placesRenderItem = ({ item }) => {
+        return (
+
+            <View key={item} style={styles.placeCard}>
+                <View style={styles.placeImageContainer}>
+                    <Image style={styles.placeImage} source={{ uri: item.imageUrl }} />
+                </View>
+                <View style={styles.placeTextContainer}>
+                    <Text>{item.title}</Text>
+                    <Text>{item.subTitle}</Text>
+                    <Text>{item.description}</Text>
+                </View>
+            </View>
+        )
+    };
+
     return (
-        <ScrollView contentContainerStyle={styles.listViewComponent}>
-            {Object.values(nationalTrustPlaces).map(index => {
-                return (
-                    <View key={index.id} style={styles.placeCard}>
-                        <View style={styles.placeImageContainer}>
-                            <Image style={styles.placeImage} source={{ uri: index.imageUrl }} />
-                        </View>
-                        <View style={styles.placeTextContainer}>
-                            <Text>{index.title}</Text>
-                            <Text>{index.subTitle}</Text>
-                            <Text>{index.description}</Text>
-                        </View>
-                    </View>
-                )
-            })}
-        </ScrollView>
-    )
+        <FlatList
+            data={placesArray}
+            renderItem={placesRenderItem}
+            keyExtractor={item => item.id}
+        />
+    );
 }
 
 export default ListViewComponent
 
 const styles = StyleSheet.create({
     listViewComponent: {
-        flexGrow: 1,
-        alignItems: 'center',
+        flex: 1,
+        alignContent: 'center',
         backgroundColor: 'lightgray',
     },
     placeCard: {

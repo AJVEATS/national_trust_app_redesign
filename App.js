@@ -28,8 +28,8 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Map" component={MapView} inactiveBackgroundColor={'blue'} />
       <Drawer.Screen name="List" component={ListView} />
+      <Drawer.Screen name="Map" component={MapView} inactiveBackgroundColor={'blue'} />
     </Drawer.Navigator>
   );
 }
