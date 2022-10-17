@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, SafeAreaView, View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import MapComponent from './Components/MapComponents';
 import ListComponent from './Components/ListComponent';
@@ -23,14 +25,41 @@ function ListView() {
   )
 }
 
-const Drawer = createDrawerNavigator();
 
-function MyDrawer() {
+const Tab = createBottomTabNavigator();
+
+function AppNavigator() {
   return (
-    <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="List" component={ListView} />
-      <Drawer.Screen name="Map" component={MapView} inactiveBackgroundColor={'blue'} />
-    </Drawer.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'List') {
+            iconName = focused
+              ? 'list'
+              : 'list-outline';
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'ios-list-box' : 'ios-list';
+          }
+
+          if (route.name === 'Map') {
+            iconName = focused
+              ? 'map'
+              : 'map-outline';
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'ios-list-box' : 'ios-list';
+          }
+
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: 'teal',
+        tabBarInactiveTintColor: 'gray',
+      })}>
+      <Tab.Screen name="List" component={ListView} />
+      <Tab.Screen name="Map" component={MapView} />
+    </Tab.Navigator>
   );
 }
 
@@ -38,7 +67,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MyDrawer />
+      <AppNavigator />
     </NavigationContainer>
   );
 }

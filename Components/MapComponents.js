@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet, Dimensions, KeyboardAvoidingView } from 'react-native';
-import MapView from 'react-native-maps';
-import { Marker } from "react-native-maps";
+import { StyleSheet, Dimensions } from 'react-native';
+import MapView, { Marker } from "react-native-maps";
 import '../data/nt_places.json';
 
 
