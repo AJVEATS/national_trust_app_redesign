@@ -3,7 +3,7 @@ import React from 'react'
 
 import '../data/nt_places.json';
 
-const ListViewComponent = () => {
+const ListViewComponent = ({ navigation }) => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const placesArray = Object.values(nationalTrustPlaces);
@@ -11,14 +11,13 @@ const ListViewComponent = () => {
 
     const placesRenderItem = ({ item }) => {
         return (
-            <Pressable key={item} style={styles.placeCard}>
+            <Pressable key={item} style={styles.placeCard} >
                 <View style={styles.placeImageContainer}>
                     <Image style={styles.placeImage} source={{ uri: item.imageUrl }} />
                 </View>
                 <View style={styles.placeTextContainer}>
-                    <Text>{item.title}</Text>
-                    <Text>{item.subTitle}</Text>
-                    <Text>{item.description}</Text>
+                    <Text style={styles.placeText}>{item.title}</Text>
+                    <Text style={styles.placeSubText}>{item.subTitle}</Text>
                 </View>
             </Pressable>
         )
@@ -44,21 +43,31 @@ const styles = StyleSheet.create({
     },
     placeImageContainer: {
         width: '95%',
-        height: 200,
-        borderTopEndRadius: 10
+        height: 235,
     },
     placeImage: {
         width: '100%',
         height: '100%',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
     },
     placeTextContainer: {
         width: '95%',
-        height: 100,
+        height: 65,
         marginHorizontal: 2,
         paddingHorizontal: 10,
         backgroundColor: 'white',
         // transform: [{ translateY: -10 }],
-        borderTopWidth: 5,
-        borderTopColor: 'teal'
-    }
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        justifyContent: 'center',
+    },
+    placeText: {
+        fontSize: 18,
+    },
+    placeSubText: {
+        fontSize: 16,
+        fontStyle: 'italic',
+        color: 'teal'
+    },
 })

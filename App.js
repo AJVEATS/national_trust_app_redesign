@@ -1,30 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import MapComponent from './Components/MapComponents';
-import ListComponent from './Components/ListComponent';
-
-function MapView() {
-  return (
-    <SafeAreaView style={styles.homeContainer}>
-      <MapComponent />
-    </SafeAreaView>
-  )
-}
-
-function ListView() {
-  return (
-    <SafeAreaView style={styles.listViewContainer}>
-      <StatusBar hidden />
-      <ListComponent />
-    </SafeAreaView>
-  )
-}
-
+import MapScreen from './Screens/MapScreen';
+import ListScreen from './Screens/ListScreen';
+import PlaceScreen from './Screens/PlaceScreen';
+import TestScreen from './Screens/TestScreen';
+import ListStack from './Screens/TestScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +15,7 @@ function AppNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -39,16 +23,10 @@ function AppNavigator() {
             iconName = focused
               ? 'list'
               : 'list-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
-          }
-
-          if (route.name === 'Map') {
+          } else if (route.name === 'Map') {
             iconName = focused
               ? 'map'
               : 'map-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
           }
 
           // You can return any component that you like here!
@@ -57,8 +35,9 @@ function AppNavigator() {
         tabBarActiveTintColor: 'teal',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name="List" component={ListView} />
-      <Tab.Screen name="Map" component={MapView} />
+      {/* <Tab.Screen name="List" component={ListScreen} /> */}
+      <Tab.Screen name="List" component={TestScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>
   );
 }
@@ -68,6 +47,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppNavigator />
+
     </NavigationContainer>
   );
 }
@@ -79,15 +59,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-  },
-  homeContainer: {
-    justifyContent: 'center',
-    flex: 1,
-    alignContent: 'center',
-  },
-  listViewContainer: {
-    flex: 1,
-
   },
   home: {
     justifyContent: 'center',
