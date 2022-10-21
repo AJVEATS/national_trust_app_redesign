@@ -1,6 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
-import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, Dimensions, Button, Text, View } from 'react-native';
+import MapView, { Callout, Marker } from "react-native-maps";
 import '../data/nt_places.json';
 
 
@@ -8,13 +9,29 @@ import '../data/nt_places.json';
 const MapComponent = () => {
     let nationalTrustPlaces = require('../data/nt_places.json');
 
+    const navigation = useNavigation();
+
+    const changeScreenOnPress = (item) => {
+        navigation.push('PlaceScreen', { data: item.id });
+    }
+
     const styles = StyleSheet.create({
         map: {
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height,
             alignContent: 'center',
             justifyContent: 'center',
-            flex: 1
+            flex: 1,
+        },
+        markerCallout: {
+            width: 300,
+            height: 300
+        },
+        markerView: {
+            alignItems: 'center',
+        },
+        markerTitle: {
+            // fontSize: 24,
         },
     });
 
@@ -27,13 +44,19 @@ const MapComponent = () => {
                 latitudeDelta: 0.09,
                 longitudeDelta: 0.04,
             }}>
-            {Object.values(nationalTrustPlaces).map(index => {
+            {Object.values(nationalTrustPlaces).map(item => {
                 return <Marker
-                    key={index.id}
-                    coordinate={{ latitude: index.location.latitude, longitude: index.location.longitude }}
-                    title={index.title}
-                    description={index.description}
-                    icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }} />
+                    key={item.id}
+                    coordinate={{ latitude: item.location.latitude, longitude: item.location.longitude }}
+                    icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }}
+                    onCalloutPress={() => changeScreenOnPress(item)} >
+                    <Callout>
+                        <View style={styles.markerView}>
+                            <Text style={styles.markerTitle}>{item.title}</Text>
+                            <Button title="find more" onProgress={() => navigation.push('PlaceScreen', { data: item.id })} />
+                        </View>
+                    </Callout>
+                </Marker>
             })}
         </MapView>
     )

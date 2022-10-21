@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, SafeAreaView, Button } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 
 function Screen1({ navigation }) {

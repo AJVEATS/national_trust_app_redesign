@@ -2,16 +2,22 @@ import { StyleSheet, View, Image, Text, FlatList, Pressable } from 'react-native
 import React from 'react'
 
 import '../data/nt_places.json';
+import { useNavigation } from '@react-navigation/native';
 
-const ListViewComponent = ({ navigation }) => {
+const ListViewComponent = () => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const placesArray = Object.values(nationalTrustPlaces);
 
+    const navigation = useNavigation();
+
+    const changeScreenOnPress = (item) => {
+        navigation.push('PlaceScreen', { data: item.id });
+    }
 
     const placesRenderItem = ({ item }) => {
         return (
-            <Pressable key={item} style={styles.placeCard} >
+            <Pressable key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >
                 <View style={styles.placeImageContainer}>
                     <Image style={styles.placeImage} source={{ uri: item.imageUrl }} />
                 </View>
@@ -32,34 +38,35 @@ const ListViewComponent = ({ navigation }) => {
     );
 }
 
+
 export default ListViewComponent
 
 const styles = StyleSheet.create({
     placeCard: {
         width: '100%',
         marginTop: 7,
-        height: 300,
+        height: 275,
         alignItems: 'center',
     },
     placeImageContainer: {
         width: '95%',
-        height: 235,
+        height: 200,
     },
     placeImage: {
         width: '100%',
         height: '100%',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
     placeTextContainer: {
         width: '95%',
-        height: 65,
+        height: 75,
         marginHorizontal: 2,
         paddingHorizontal: 10,
         backgroundColor: 'white',
         // transform: [{ translateY: -10 }],
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
         justifyContent: 'center',
     },
     placeText: {

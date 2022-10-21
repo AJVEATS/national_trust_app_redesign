@@ -7,9 +7,30 @@ import MapScreen from './Screens/MapScreen';
 import ListScreen from './Screens/ListScreen';
 import PlaceScreen from './Screens/PlaceScreen';
 import TestScreen from './Screens/TestScreen';
-import ListStack from './Screens/TestScreen'
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
+
+const appStack = createStackNavigator();
+
+function PlaceStack() {
+  return (
+    <appStack.Navigator screenOptions={{ headerShown: false }}>
+      <appStack.Screen name="ListScreen" component={ListScreen} />
+      <appStack.Screen name="PlaceScreen" component={PlaceScreen} />
+    </appStack.Navigator >
+  )
+}
+
+function MapStack() {
+  return (
+    <appStack.Navigator screenOptions={{ headerShown: false }}>
+      <appStack.Screen name="MapScreen" component={MapScreen} />
+      <appStack.Screen name="PlaceScreen" component={PlaceScreen} />
+    </appStack.Navigator>
+  )
+}
+
 
 function AppNavigator() {
   return (
@@ -35,9 +56,8 @@ function AppNavigator() {
         tabBarActiveTintColor: 'teal',
         tabBarInactiveTintColor: 'gray',
       })}>
-      {/* <Tab.Screen name="List" component={ListScreen} /> */}
-      <Tab.Screen name="List" component={TestScreen} />
-      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="List" component={PlaceStack} />
+      <Tab.Screen name="Map" component={MapStack} />
     </Tab.Navigator>
   );
 }
@@ -47,7 +67,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppNavigator />
-
     </NavigationContainer>
   );
 }
