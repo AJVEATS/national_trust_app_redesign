@@ -1,8 +1,9 @@
-import { StyleSheet, View, Image, Text, FlatList, Pressable } from 'react-native'
 import React from 'react'
+import { StyleSheet, View, Image, Text, FlatList, Pressable } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 import '../data/nt_places.json';
-import { useNavigation } from '@react-navigation/native';
+import colors from '../colors';
 
 const ListViewComponent = () => {
 
@@ -75,6 +76,6 @@ const styles = StyleSheet.create({
     placeSubText: {
         fontSize: 16,
         fontStyle: 'italic',
-        color: 'teal'
+        color: colors.ntGreen
     },
 })

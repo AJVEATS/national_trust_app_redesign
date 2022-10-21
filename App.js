@@ -6,8 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MapScreen from './Screens/MapScreen';
 import ListScreen from './Screens/ListScreen';
 import PlaceScreen from './Screens/PlaceScreen';
-import TestScreen from './Screens/TestScreen';
 import { createStackNavigator } from '@react-navigation/stack';
+import colors from './colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +53,7 @@ function AppNavigator() {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'teal',
+        tabBarActiveTintColor: colors.ntGreen,
         tabBarInactiveTintColor: 'gray',
       })}>
       <Tab.Screen name="List" component={PlaceStack} />
@@ -70,20 +70,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  home: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 20,
-  },
-});

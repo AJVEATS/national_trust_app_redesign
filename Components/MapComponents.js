@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Dimensions, Button, Text, View } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
+import colors from '../colors';
 import '../data/nt_places.json';
 
 
@@ -53,7 +54,7 @@ const MapComponent = () => {
                     <Callout>
                         <View style={styles.markerView}>
                             <Text style={styles.markerTitle}>{item.title}</Text>
-                            <Button title="find more" onProgress={() => navigation.push('PlaceScreen', { data: item.id })} />
+                            <Button style={styles.markerButton} title="find more" onProgress={() => navigation.push('PlaceScreen', { data: item.id })} />
                         </View>
                     </Callout>
                 </Marker>
