@@ -5,11 +5,9 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import colors from '../colors';
 import '../data/nt_places.json';
 
-
-
 const MapComponent = () => {
-    let nationalTrustPlaces = require('../data/nt_places.json');
 
+    let nationalTrustPlaces = require('../data/nt_places.json');
     const navigation = useNavigation();
 
     const changeScreenOnPress = (item) => {
@@ -25,14 +23,17 @@ const MapComponent = () => {
             flex: 1,
         },
         markerCallout: {
-            width: 300,
-            height: 300
+
         },
         markerView: {
             alignItems: 'center',
+            // backgroundColor: colors.ntGreen
         },
         markerTitle: {
             // fontSize: 24,
+        },
+        markerButton: {
+            backgroundColor: colors.ntGreen
         },
     });
 

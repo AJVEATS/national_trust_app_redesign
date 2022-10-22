@@ -6,7 +6,6 @@ import colors from '../colors'
 const ListScreen = () => {
 
     return (
-
         <SafeAreaView style={styles.listViewContainer}>
             <StatusBar hidden />
             <View style={styles.listContainer}/*Ask Ben about this in the lab*/>

@@ -9,7 +9,6 @@ const ListViewComponent = () => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const placesArray = Object.values(nationalTrustPlaces);
-
     const navigation = useNavigation();
 
     const changeScreenOnPress = (item) => {
@@ -65,10 +64,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 2,
         paddingHorizontal: 10,
         backgroundColor: 'white',
-        // transform: [{ translateY: -10 }],
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         justifyContent: 'center',
+        elevation: 5,
     },
     placeText: {
         fontSize: 18,

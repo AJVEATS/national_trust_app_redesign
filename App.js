@@ -1,12 +1,11 @@
-import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import MapScreen from './Screens/MapScreen';
 import ListScreen from './Screens/ListScreen';
 import PlaceScreen from './Screens/PlaceScreen';
-import { createStackNavigator } from '@react-navigation/stack';
 import colors from './colors';
 
 const Tab = createBottomTabNavigator();
@@ -31,7 +30,6 @@ function MapStack() {
   )
 }
 
-
 function AppNavigator() {
   return (
     <Tab.Navigator
@@ -39,18 +37,15 @@ function AppNavigator() {
         headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
           if (route.name === 'List') {
             iconName = focused
               ? 'list'
               : 'list-outline';
           } else if (route.name === 'Map') {
             iconName = focused
-              ? 'map'
-              : 'map-outline';
+              ? 'earth'
+              : 'earth-outline';
           }
-
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: colors.ntGreen,
