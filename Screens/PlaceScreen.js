@@ -50,7 +50,8 @@ const PlaceScreen = (item) => {
                             latitude: place.location.latitude,
                             longitude: place.location.longitude
                         }}
-                        icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }} />
+                    // icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }}
+                    />
                 </MapView>
             </View>
         </ScrollView>
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     placeTitleText: {
         color: colors.titleText,
         fontSize: 24,
+        fontFamily: 'serif',
     },
     placeLocation: {},
     placeLocationText: {

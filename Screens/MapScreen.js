@@ -1,11 +1,13 @@
-import { StyleSheet, Text, SafeAreaView, StatusBar } from 'react-native'
+import { StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import MapComponent from '../Components/MapComponents'
+import MapSearchComponent from '../Components/MapSearchComponent'
 
 const MapScreen = () => {
     return (
-        <SafeAreaView style={styles.homeContainer}>
+        <SafeAreaView style={styles.MapScreen}>
             <StatusBar hidden />
+            <MapSearchComponent />
             <MapComponent />
         </SafeAreaView>
     )
@@ -14,10 +16,9 @@ const MapScreen = () => {
 export default MapScreen
 
 const styles = StyleSheet.create({
-
-    homeContainer: {
-        justifyContent: 'center',
+    MapScreen: {
         flex: 1,
         alignContent: 'center',
+        justifyContent: 'center',
     },
 })
