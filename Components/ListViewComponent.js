@@ -19,7 +19,7 @@ const ListViewComponent = () => {
         return (
             <Pressable key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >
                 <View style={styles.placeImageContainer}>
-                    <Image style={styles.placeImage} source={{ uri: item.imageUrl }} />
+                    <Image style={styles.placeImage} source={{ uri: item.imageUrl }} accessibilityLabel={item.imageDescription} />
                 </View>
                 <View style={styles.placeTextContainer}>
                     <Text style={styles.placeText}>{item.title}</Text>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 75,
         marginHorizontal: 2,
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         backgroundColor: 'white',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,

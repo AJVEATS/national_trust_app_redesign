@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import '../data/nt_places.json';
 import colors from '../colors';
+import MapView, { Marker } from "react-native-maps";
 
 const PlaceScreen = (item) => {
 
@@ -32,6 +33,25 @@ const PlaceScreen = (item) => {
                 <View style={styles.placeDescription}>
                     <Text style={styles.placeDescriptionText}>{place.description}</Text>
                 </View>
+                <MapView
+                    style={styles.placeMapView}
+                    initialRegion={{
+                        latitude: place.location.latitude,
+                        longitude: place.location.longitude,
+                        latitudeDelta: 0.09,
+                        longitudeDelta: 0.04,
+                    }}
+                    mapType={"satellite"}
+                    scrollEnabled={false}
+                    loadingEnabled={true}>
+                    <Marker
+                        key={place}
+                        coordinate={{
+                            latitude: place.location.latitude,
+                            longitude: place.location.longitude
+                        }}
+                        icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }} />
+                </MapView>
             </View>
         </ScrollView>
     );
@@ -51,7 +71,7 @@ const styles = StyleSheet.create({
     },
     placeImageContainer: {
         width: '100%',
-        height: 300,
+        height: 250,
     },
     placeImage: {
         width: '100%',
@@ -66,15 +86,26 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     placeTitleText: {
-        color: colors.text,
+        color: colors.titleText,
+        fontSize: 24,
     },
     placeLocation: {},
-    placeLocationText: {},
+    placeLocationText: {
+        fontSize: 20,
+        marginTop: 5
+    },
     placeDescription: {
         backgroundColor: colors.ntGreen,
-        padding: 7.5,
+        padding: 10,
+        marginVertical: 10
     },
     placeDescriptionText: {
         color: 'white',
+        fontSize: 15
+    },
+    placeMapView: {
+        width: '100%',
+        height: 275,
+        paddingTop: 10,
     },
 })

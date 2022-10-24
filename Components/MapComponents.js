@@ -27,7 +27,6 @@ const MapComponent = () => {
         },
         markerView: {
             alignItems: 'center',
-            // backgroundColor: colors.ntGreen
         },
         markerTitle: {
             // fontSize: 24,
@@ -45,7 +44,8 @@ const MapComponent = () => {
                 longitude: -1.892924,
                 latitudeDelta: 0.09,
                 longitudeDelta: 0.04,
-            }}>
+            }}
+            loadingEnabled={true}>
             {Object.values(nationalTrustPlaces).map(item => {
                 return <Marker
                     key={item.id}
