@@ -30,7 +30,6 @@ const MapComponent = () => {
                 return <Marker
                     key={item.id}
                     coordinate={{ latitude: item.location.latitude, longitude: item.location.longitude }}
-                    // icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }}
                     onCalloutPress={() => changeScreenOnPress(item)} >
                     <Callout style={styles.mapCallout}
                         tooltip={true}>
@@ -51,24 +50,24 @@ const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        alignContent: 'center',
-        justifyContent: 'center',
-        flex: 1,
         zIndex: 1,
     },
     mapCallout: {
         backgroundColor: colors.white,
-        alignItems: 'center',
+        width: 200,
     },
     markerView: {
-        width: '100%',
+        // width: '100%',
         alignItems: 'center',
         margin: 10,
     },
     markerTitle: {
-        // fontSize: 24,
+        fontSize: 18,
+        textAlign: 'center',
+        paddingBottom: 10
     },
     markerButton: {
-        backgroundColor: colors.ntGreen
+        backgroundColor: colors.ntGreen,
+        paddingBottom: 10
     },
 });

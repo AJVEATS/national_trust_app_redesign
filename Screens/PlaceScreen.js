@@ -11,7 +11,29 @@ const PlaceScreen = (item) => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const place = nationalTrustPlaces[item.route.params.data];
+    let openStatus = place.openingTimeStatus;
+    console.log(openStatus);
     const navigation = useNavigation();
+
+    const hasActivities = (activities) => {
+        if (activities != null) {
+            return (
+                <Text style={styles.placeActivityText}>Available Activities: {activities}</Text>
+            )
+        }
+    }
+
+    const openingStatus = (openStatus) => {
+        if (openStatus === "Open today") {
+            return (
+                <Text>Open</Text>
+            )
+        } else if (openStatus === "Closed today") {
+            return (
+                <Text>Closed</Text>
+            )
+        }
+    }
 
     return (
         <ScrollView style={styles.place}>
@@ -30,8 +52,14 @@ const PlaceScreen = (item) => {
                 <View style={styles.placeLocation}>
                     <Text style={styles.placeLocationText}>{place.subTitle}</Text>
                 </View>
+                <View style={styles.placeOpeningTimes}>
+                    {openingStatus(place.openingTimeStatus)}
+                </View>
                 <View style={styles.placeDescription}>
                     <Text style={styles.placeDescriptionText}>{place.description}</Text>
+                </View>
+                <View style={styles.placeActivity}>
+                    {hasActivities(place.activityTagsAsCsv)}
                 </View>
                 <MapView
                     style={styles.placeMapView}
@@ -50,7 +78,6 @@ const PlaceScreen = (item) => {
                             latitude: place.location.latitude,
                             longitude: place.location.longitude
                         }}
-                    // icon={{ uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/320/round-pushpin_1f4cd.png' }}
                     />
                 </MapView>
             </View>
@@ -104,6 +131,12 @@ const styles = StyleSheet.create({
     placeDescriptionText: {
         color: 'white',
         fontSize: 15
+    },
+    placeActivity: {
+        marginBottom: 10,
+    },
+    placeActivityText: {
+        fontSize: 16,
     },
     placeMapView: {
         width: '100%',
