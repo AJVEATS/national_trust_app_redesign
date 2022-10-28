@@ -3,6 +3,7 @@ import React from 'react'
 import colors from '../colors'
 
 const PlaceInfoComponent = (place) => {
+
     const hasActivities = (activities) => {
         if (activities != null) {
             return (
@@ -19,7 +20,7 @@ const PlaceInfoComponent = (place) => {
             <View style={styles.placeDescription}>
                 <Text style={styles.placeDescriptionText}>{place.data.description}</Text>
             </View>
-            {hasActivities(place.activityTagsAsCsv)}
+            {hasActivities(place.data.activityTagsAsCsv)}
         </View>
     )
 }
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
         opacity: 0.7
     },
     openingTimeStatus: {
-        fontSize: 16,
+        fontSize: 18,
     },
     placeDescription: {
         backgroundColor: colors.ntGreen,
@@ -56,8 +57,6 @@ const styles = StyleSheet.create({
     },
     placeActivity: {
         marginBottom: 10,
-    },
-    placeActivityText: {
-        fontSize: 16,
+        fontSize: 18,
     },
 })

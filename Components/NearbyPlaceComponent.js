@@ -1,8 +1,10 @@
 import { Text, StyleSheet, View, Image } from 'react-native'
-import React, { Component } from 'react'
+import React from 'react'
 import colors from '../colors'
+import '../data/nt_places.json'
 
 const NearbyPlaceComponent = () => {
+
     return (
         <View style={styles.nearby}>
             <Text style={styles.nearbyListTitle}>Nearby places</Text>
@@ -67,7 +69,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10
     },
     nearbyListTitle: {
-        fontSize: 20,
+        fontSize: 22,
+        borderBottomColor: 'black'
     },
     nearbyPlaces: {
         flex: 1,
@@ -98,7 +101,6 @@ const styles = StyleSheet.create({
         color: colors.white,
         paddingBottom: 10,
         fontSize: 18,
-        fontFamily: 'serif',
     },
     nearbyLocation: {
         color: colors.white,

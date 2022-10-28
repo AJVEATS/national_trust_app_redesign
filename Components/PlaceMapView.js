@@ -1,7 +1,6 @@
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
-
 import MapView, { Marker } from "react-native-maps";
+import React from 'react'
 
 const PlaceMapView = (props) => {
     return (
