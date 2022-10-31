@@ -6,25 +6,26 @@ import '../data/nt_places.json'
 const NearbyPlaceComponent = () => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
-    const nearby1 = Math.floor(Math.random() * 100) + 1;
-    const nearby2 = Math.floor(Math.random() * 100) + 1;
+    var keys = Object.keys(nationalTrustPlaces);
+    const nearby1 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
+    const nearby2 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
 
     return (
         <View style={styles.nearby}>
             <Text style={styles.nearbyListTitle}>Other places</Text>
             <View style={styles.nearbyPlaces}>
                 <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: nationalTrustPlaces[nearby1].imageUrl }} accessibilityLabel={nationalTrustPlaces[nearby1].imageDescription} />
+                    <Image style={styles.nearbyPlaceImage} source={{ uri: nearby1.imageUrl }} accessibilityLabel={nearby1.imageDescription} />
                     <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>{nationalTrustPlaces[nearby1].title}</Text>
-                        <Text style={styles.nearbyLocation}>{nationalTrustPlaces[nearby1].subTitle}</Text>
+                        <Text style={styles.nearbyTitle}>{nearby1.title}</Text>
+                        <Text style={styles.nearbyLocation}>{nearby1.subTitle}</Text>
                     </View>
                 </View>
                 <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: nationalTrustPlaces[nearby2].imageUrl }} accessibilityLabel={nationalTrustPlaces[nearby2].imageDescription} />
+                    <Image style={styles.nearbyPlaceImage} source={{ uri: nearby2.imageUrl }} accessibilityLabel={nearby2.imageDescription} />
                     <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>{nationalTrustPlaces[nearby2].title}</Text>
-                        <Text style={styles.nearbyLocation}>{nationalTrustPlaces[nearby2].subTitle}</Text>
+                        <Text style={styles.nearbyTitle}>{nearby2.title}</Text>
+                        <Text style={styles.nearbyLocation}>{nearby2.subTitle}</Text>
                     </View>
                 </View>
             </View>
