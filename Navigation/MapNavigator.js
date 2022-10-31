@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represets the stack navigator used to navigate between the MapScreen
+ * and PlaceScreen
+ */
 import { createStackNavigator } from '@react-navigation/stack';
 import MapScreen from '../Screens/MapScreen';
 import PlaceScreen from '../Screens/PlaceScreen';

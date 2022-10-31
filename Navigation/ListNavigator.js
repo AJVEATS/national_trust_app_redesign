@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represets the stack navigator used to navigate between the ListScreen
+ * and PlaceScreen
+ */
 import { createStackNavigator } from '@react-navigation/stack';
 import ListScreen from '../Screens/ListScreen';
 import PlaceScreen from '../Screens/PlaceScreen';

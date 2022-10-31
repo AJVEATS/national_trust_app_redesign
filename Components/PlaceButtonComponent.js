@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represets the buttons for the PlaceScreen, this includes a back button
+ * and a favourite button.
+ */
 import { StyleSheet, View, Pressable } from 'react-native'
 import React from 'react'
 
@@ -7,13 +11,16 @@ import colors from '../colors';
 
 const PlaceButtonComponent = () => {
     const navigation = useNavigation();
+
+    const [heart, setHeart] = React.useState(false)
+
     return (
         <View>
             <Pressable style={styles.backPressable} onPress={() => navigation.goBack()} >
-                <Ionicons name="arrow-back" size={32} color={colors.white} />
+                <Ionicons name={"arrow-back"} size={32} color={colors.white} />
             </Pressable>
-            <Pressable style={styles.heartPressable}>
-                <Ionicons name={"heart-outline"} size={32} color={colors.white} />
+            <Pressable style={styles.heartPressable} onPress={() => { setHeart(!heart); }}>
+                <Ionicons name={heart ? "heart" : "heart-outline"} size={32} color={colors.white} />
             </Pressable>
         </View>
     );

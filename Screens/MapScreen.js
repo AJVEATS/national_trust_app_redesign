@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represets the MapScreen which displays MapSearchComponent and the 
+ * MapComponent
+ */
 import { StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import MapComponent from '../Components/MapComponents'

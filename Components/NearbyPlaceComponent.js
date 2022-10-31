@@ -5,56 +5,26 @@ import '../data/nt_places.json'
 
 const NearbyPlaceComponent = () => {
 
+    const nationalTrustPlaces = require('../data/nt_places.json');
+    const nearby1 = Math.floor(Math.random() * 100) + 1;
+    const nearby2 = Math.floor(Math.random() * 100) + 1;
+
     return (
         <View style={styles.nearby}>
-            <Text style={styles.nearbyListTitle}>Nearby places</Text>
+            <Text style={styles.nearbyListTitle}>Other places</Text>
             <View style={styles.nearbyPlaces}>
                 <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431873744700-carnewascliffsnti1191453chrislacey.jpg" }} accessibilityLabel={"Carnewas at Bedruthan cliffs at dusk"} />
+                    <Image style={styles.nearbyPlaceImage} source={{ uri: nationalTrustPlaces[nearby1].imageUrl }} accessibilityLabel={nationalTrustPlaces[nearby1].imageDescription} />
                     <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Castle Coole</Text>
-                        <Text style={styles.nearbyLocation}>Enniskillen, County Fermanagh</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
+                        <Text style={styles.nearbyTitle}>{nationalTrustPlaces[nearby1].title}</Text>
+                        <Text style={styles.nearbyLocation}>{nationalTrustPlaces[nearby1].subTitle}</Text>
                     </View>
                 </View>
                 <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431755206533-cimg1907.jpg" }} accessibilityLabel={"A view of the scarp at Blackcap"} />
+                    <Image style={styles.nearbyPlaceImage} source={{ uri: nationalTrustPlaces[nearby2].imageUrl }} accessibilityLabel={nationalTrustPlaces[nearby2].imageDescription} />
                     <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Blackcap</Text>
-                        <Text style={styles.nearbyLocation}>near Lewes, East Sussex</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
-                    </View>
-                </View>
-                <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431755206533-cimg1907.jpg" }} accessibilityLabel={"A view of the scarp at Blackcap"} />
-                    <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Blackcap</Text>
-                        <Text style={styles.nearbyLocation}>near Lewes, East Sussex</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
-                    </View>
-                </View>
-                <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431873744700-carnewascliffsnti1191453chrislacey.jpg" }} accessibilityLabel={"Carnewas at Bedruthan cliffs at dusk"} />
-                    <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Castle Coole</Text>
-                        <Text style={styles.nearbyLocation}>Enniskillen, County Fermanagh</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
-                    </View>
-                </View>
-                <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431873744700-carnewascliffsnti1191453chrislacey.jpg" }} accessibilityLabel={"Carnewas at Bedruthan cliffs at dusk"} />
-                    <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Castle Coole</Text>
-                        <Text style={styles.nearbyLocation}>Enniskillen, County Fermanagh</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
-                    </View>
-                </View>
-                <View style={styles.nearbyPlace}>
-                    <Image style={styles.nearbyPlaceImage} source={{ uri: "https://nt.global.ssl.fastly.net/images/1431755206533-cimg1907.jpg" }} accessibilityLabel={"A view of the scarp at Blackcap"} />
-                    <View style={styles.nearbyInfo}>
-                        <Text style={styles.nearbyTitle}>Blackcap</Text>
-                        <Text style={styles.nearbyLocation}>near Lewes, East Sussex</Text>
-                        <Text style={styles.nearbyDistance}>(6 miles)</Text>
+                        <Text style={styles.nearbyTitle}>{nationalTrustPlaces[nearby2].title}</Text>
+                        <Text style={styles.nearbyLocation}>{nationalTrustPlaces[nearby2].subTitle}</Text>
                     </View>
                 </View>
             </View>
@@ -80,32 +50,32 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     nearbyPlace: {
-        width: '48.5%',
+        width: '100%',
         marginTop: 10,
         overflow: 'hidden',
         borderRadius: 6,
         borderWidth: 1,
         borderColor: 'transparent',
+        flexDirection: 'row',
         height: 'auto',
     },
     nearbyPlaceImage: {
-        width: '100%',
+        width: '30%',
         height: 100,
     },
     nearbyInfo: {
         backgroundColor: colors.ntGreen,
         color: "red",
         padding: 10,
+        width: '70%',
     },
     nearbyTitle: {
         color: colors.white,
-        paddingBottom: 10,
-        fontSize: 18,
+        paddingBottom: 5,
+        fontSize: 20,
     },
     nearbyLocation: {
         color: colors.white,
+        fontSize: 14,
     },
-    nearbyDistance: {
-        color: colors.white
-    }
 })

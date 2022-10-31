@@ -1,11 +1,11 @@
-import { StyleSheet, View, Image, Text, FlatList, Pressable } from 'react-native';
+import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import '../data/nt_places.json';
 import colors from '../colors';
 
-const ListCardComponent = () => {
+const ListViewComponent = () => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const placesArray = Object.values(nationalTrustPlaces);
@@ -20,9 +20,9 @@ const ListCardComponent = () => {
         navigation.push('PlaceScreen', { data: item.id });
     }
 
-    const placesRenderItem = ({ item }) => {
+    const placeCard = ({ item }) => {
         return (
-            <Pressable key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >
+            <TouchableOpacity key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >
                 <View style={styles.placeImageContainer}>
                     <Image style={styles.placeImage} source={{ uri: item.imageUrl }} accessibilityLabel={item.imageDescription} />
                 </View>
@@ -30,21 +30,21 @@ const ListCardComponent = () => {
                     <Text style={styles.placeText}>{item.title}</Text>
                     <Text style={styles.placeSubText}>{item.subTitle}</Text>
                 </View>
-            </Pressable>
+            </TouchableOpacity >
         )
     };
 
     return (
         <FlatList
             data={placesArray}
-            renderItem={placesRenderItem}
+            renderItem={placeCard}
             keyExtractor={item => item.id}
         />
     );
 }
 
 
-export default ListCardComponent
+export default ListViewComponent
 
 const styles = StyleSheet.create({
     placeCard: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         height: 75,
         marginHorizontal: 2,
         paddingHorizontal: 15,
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         justifyContent: 'center',
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     placeSubText: {
         fontSize: 16,
         fontStyle: 'italic',
-        color: colors.ntNavy,
-        opacity: 0.4
+        color: colors.ntGreen,
     },
 })

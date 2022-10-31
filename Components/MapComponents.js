@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This file represets the map component which displays the 
+ * location of all national trust places on a map using MapView and Marker
+ */
+
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Dimensions, Button, Text, View } from 'react-native';

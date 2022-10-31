@@ -1,6 +1,10 @@
+/**
+ * @fileoverview This file represets the ListScreen which displays the title and includes the 
+ * ListViewComponent
+ */
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 import React from 'react';
-import ListCardComponent from '../Components/ListCardComponent';
+import ListViewComponent from '../Components/ListViewComponent';
 import colors from '../colors';
 
 const ListScreen = () => {
@@ -13,7 +17,7 @@ const ListScreen = () => {
                     <Text style={styles.listTitle}>National Trust</Text >
                 </View >
                 <View style={styles.listScrollContainer}>
-                    <ListCardComponent />
+                    <ListViewComponent />
                 </View>
             </View >
         </SafeAreaView>

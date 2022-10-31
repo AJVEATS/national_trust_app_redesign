@@ -1,7 +1,10 @@
+/**
+ * @fileoverview This file has all of the application colours
+ */
 export default {
     ntGreen: '#007A3B',
     ntLightGreen: '#00b43c',
-    ntNavy: '#0f0032',
+    ntNavy: '#6b6b6b',
     text: '#000000',
     white: '#ffffff',
     titleText: '#000000',

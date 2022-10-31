@@ -1,8 +1,13 @@
+/**
+ * @fileoverview This file represets the PlaceScreen which displays the PlaceButtonComponent,
+ * PlaceInfoComponent, PlaceMapView and NearbyPlaceComponent. It displays all of the information
+ * about the place that was select from the ListViewComponent
+ */
+
 import React from 'react'
-import { StyleSheet, Text, ScrollView, View, Image, Pressable } from 'react-native'
+import { StyleSheet, ScrollView, View, Image } from 'react-native'
 
 import '../data/nt_places.json';
-import colors from '../colors';
 import NearbyPlaceComponent from '../Components/NearbyPlaceComponent';
 import PlaceButtonComponent from '../Components/PlaceButtonComponent';
 import PlaceMapView from '../Components/PlaceMapView';
@@ -12,14 +17,6 @@ const PlaceScreen = (item) => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const place = nationalTrustPlaces[item.route.params.data];
-
-    const hasActivities = (activities) => {
-        if (activities != null) {
-            return (
-                <Text style={styles.placeActivity}>Available Activities: {activities}</Text>
-            )
-        }
-    }
 
     return (
         <ScrollView style={styles.place}>
