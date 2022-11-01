@@ -13,7 +13,7 @@ const PlaceMapView = (props) => {
                     latitudeDelta: 0.09,
                     longitudeDelta: 0.04,
                 }}
-                mapType={"satellite"}
+                mapType={"hybrid"}
                 scrollEnabled={false}
                 loadingEnabled={true}>
                 <Marker

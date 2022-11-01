@@ -34,7 +34,7 @@ const BottomTabNavigator = () => {
                 tabBarInactiveTintColor: 'gray',
             })}>
             <Tab.Screen name="List" component={ListNavigator} />
-            {/* <Tab.Screen name="Test" component={TestScreen} /> */}
+            <Tab.Screen name="Test" component={TestScreen} />
             <Tab.Screen name="Map" component={MapNavigator} />
         </Tab.Navigator>
     );

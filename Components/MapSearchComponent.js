@@ -1,3 +1,6 @@
+/**
+ * @fileoverview This file represets the search bar compononent for the MapScreen
+ */
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import colors from '../colors';

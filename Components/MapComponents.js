@@ -2,13 +2,10 @@
  * @fileoverview This file represets the map component which displays the 
  * location of all national trust places on a map using MapView and Marker
  */
-
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Dimensions, Button, Text, View } from 'react-native';
+import { StyleSheet, Dimensions, Button, Text, View, Pressable } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../colors';
 import '../data/nt_places.json';
 
@@ -27,8 +24,8 @@ const MapComponent = () => {
             initialRegion={{
                 latitude: 50.736055,
                 longitude: -1.892924,
-                latitudeDelta: 0.09,
-                longitudeDelta: 0.04,
+                latitudeDelta: 0.1,
+                longitudeDelta: 0.1,
             }}
             loadingEnabled={true}>
             {Object.values(nationalTrustPlaces).map(item => {
@@ -39,8 +36,9 @@ const MapComponent = () => {
                     <Callout style={styles.mapCallout}
                         tooltip={true}>
                         <View style={styles.markerView}>
-                            <Text style={styles.markerTitle}>{item.title}</Text>
-                            <Button style={styles.markerButton} title="find more" onProgress={() => navigation.push('PlaceScreen', { data: item.id })} />
+                            <Text style={styles.markerTitle}>{item.title}</Text><Pressable style={styles.markerPressable} onPress={() => navigation.push('PlaceScreen', { data: item.id })}>
+                                <Text style={styles.markerPressableText}>See more</Text>
+                            </Pressable>
                         </View>
                     </Callout>
                 </Marker>
@@ -58,21 +56,30 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     mapCallout: {
-        backgroundColor: colors.white,
+        backgroundColor: 'transparent',
         width: 200,
     },
     markerView: {
-        // width: '100%',
+        backgroundColor: colors.white,
         alignItems: 'center',
-        margin: 10,
+        borderColor: 'black',
+        borderRadius: 5,
+        borderStyle: 'solid',
+        padding: 10,
+        flex: 1,
     },
     markerTitle: {
         fontSize: 18,
         textAlign: 'center',
         paddingBottom: 10
     },
-    markerButton: {
+    markerPressable: {
         backgroundColor: colors.ntGreen,
-        paddingBottom: 10
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    markerPressableText: {
+        color: colors.white,
     },
 });
