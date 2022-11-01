@@ -10,9 +10,34 @@ import colors from '../colors';
 import '../data/nt_places.json';
 
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MapComponent = () => {
+
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+        })();
+    }, []);
+
+    let text = 'Waiting..';
+    if (errorMsg) {
+        text = errorMsg;
+    } else if (location) {
+        text = JSON.stringify(location);
+    }
 
     const [region, setRegion] = useState({
         latitude: 50.736055,
@@ -59,6 +84,7 @@ const MapComponent = () => {
             <MapView
                 style={styles.map}
                 region={region}
+                showsUserLocation={true}
                 loadingEnabled={true}>
                 {Object.values(nationalTrustPlaces).map(item => {
                     return <Marker

@@ -2,7 +2,7 @@
  * @fileoverview This file represets the ListScreen which displays the title and includes the 
  * ListViewComponent
  */
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
 import React from 'react';
 import ListViewComponent from '../Components/ListViewComponent';
 import colors from '../colors';
@@ -16,6 +16,14 @@ const ListScreen = () => {
                 <View style={styles.listTitleContainer}>
                     <Text style={styles.listTitle}>National Trust</Text >
                 </View >
+                {/* <View style={styles.listSearchContainer}>
+                    <TextInput
+                        style={styles.listSearch}
+                        // onChangeText={}
+                        keyboardType="default"
+                        placeholder="Search by name"
+                    />
+                </View> */}
                 <View style={styles.listScrollContainer}>
                     <ListViewComponent />
                 </View>
