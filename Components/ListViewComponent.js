@@ -25,6 +25,7 @@ const ListViewComponent = () => {
             <TouchableOpacity key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >
                 <View style={styles.placeImageContainer}>
                     <Image style={styles.placeImage} source={{ uri: item.imageUrl }} accessibilityLabel={item.imageDescription} />
+                    {console.log(item.imageDescription)}
                 </View>
                 <View style={styles.placeTextContainer}>
                     <Text style={styles.placeText}>{item.title}</Text>

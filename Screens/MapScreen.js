@@ -11,7 +11,7 @@ const MapScreen = () => {
     return (
         <SafeAreaView style={styles.MapScreen}>
             <StatusBar hidden />
-            <MapSearchComponent />
+            {/* <MapSearchComponent /> */}
             <MapComponent />
         </SafeAreaView>
     )
@@ -21,8 +21,8 @@ export default MapScreen
 
 const styles = StyleSheet.create({
     MapScreen: {
-        flex: 1,
-        alignContent: 'center',
-        justifyContent: 'center',
+        // flex: 1,
+        // alignContent: 'center',
+        // justifyContent: 'center',
     },
 })
