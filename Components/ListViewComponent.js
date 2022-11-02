@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represets the ListViewComponent which displays the flatlist of
+ * all of the national trust places
+ */
 import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';

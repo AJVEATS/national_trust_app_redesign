@@ -17,8 +17,8 @@ const ListScreen = () => {
             .then((response) => response.json())
             .then((responseJson) => {
                 // console.log(responseJson);
-                setnationalData(responseJson);
-                setlocalData(responseJson);
+                setnationalData(Object.values(responseJson));
+                setlocalData(Object.values(responseJson));
             })
             .catch((error) => {
                 console.error(error);
@@ -28,6 +28,7 @@ const ListScreen = () => {
     const handleSearch = (text) => {
         onChangeText(text);
         let items = localData;
+        console.log(items[1]);
         let newData = items;
 
         if (text) {
