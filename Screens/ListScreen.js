@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file represets the ListScreen which displays the title and includes the 
+ * @fileoverview This file represets the ListScreen which displays the title and includes the a filtering bar
  * ListViewComponent
  */
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
