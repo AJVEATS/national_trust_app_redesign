@@ -2,13 +2,10 @@ import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity } from 'react
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import '../data/nt_places.json';
 import colors from '../colors';
 
-const ListViewComponent = () => {
+const ListViewComponent = (data) => {
 
-    const nationalTrustPlaces = require('../data/nt_places.json');
-    const placesArray = Object.values(nationalTrustPlaces);
     const navigation = useNavigation();
 
     /**
@@ -36,9 +33,9 @@ const ListViewComponent = () => {
 
     return (
         <FlatList
-            data={placesArray}
+            data={Object.values(data)}
             renderItem={placeCard}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id}
         />
     );
 }

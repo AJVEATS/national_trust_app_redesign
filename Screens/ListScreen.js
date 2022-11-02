@@ -6,11 +6,41 @@ import { StyleSheet, Text, View, SafeAreaView, StatusBar, TextInput } from 'reac
 import React, { useEffect, useState } from 'react';
 import ListViewComponent from '../Components/ListViewComponent';
 import colors from '../colors';
-import '../data/nt_places.json';
 
 const ListScreen = () => {
-    const [newData, setNewData] = useState([])
-    const [localData, setLocalData] = useState([])
+    const [nationalData, setnationalData] = useState({})
+    const [value, onChangeText] = useState('')
+    const [localData, setlocalData] = useState({})
+
+    useEffect(() => {
+        fetch('https://www.nationaltrust.org.uk/search/data/all-places')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                // console.log(responseJson);
+                setnationalData(responseJson);
+                setlocalData(responseJson);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
+    const handleSearch = (text) => {
+        onChangeText(text);
+        let items = localData;
+        let newData = items;
+
+        if (text) {
+            newData = items.filter(item => {
+                const itemData = item.title.toLowerCase();
+                const textData = text.toLowerCase();
+
+                return itemData.indexOf(textData) > -1;
+            });
+        }
+
+        setnationalData(newData);
+    }
 
     return (
         <SafeAreaView style={styles.listViewContainer}>
@@ -22,13 +52,15 @@ const ListScreen = () => {
                 <View style={styles.listSearchContainer}>
                     <TextInput
                         style={styles.listSearch}
-                        // onChangeText={}
+                        onChangeText={(text) => handleSearch(text)}
                         keyboardType="default"
+                        value={value}
+                        underlineColorAndroid="transparent"
                         placeholder="Search by name"
                     />
                 </View>
                 <View style={styles.listScrollContainer}>
-                    <ListViewComponent />
+                    <ListViewComponent {...nationalData} />
                 </View>
             </View >
         </SafeAreaView>
