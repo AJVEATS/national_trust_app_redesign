@@ -1,6 +1,6 @@
 /**
- * @fileoverview This file represets the ListScreen which displays the title and includes the a filtering bar
- * ListViewComponent
+ * @fileoverview This file represets the ListScreen which displays the title and includes the a
+ * filtering text input for the ListViewComponent.
  */
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
@@ -25,6 +25,13 @@ const ListScreen = () => {
             });
     }, []);
 
+    /**
+     * @param {text} The text inputted into the text input by the user
+     * 
+     * This function is for taking in the text inputed into the text input 
+     * and the filters the data comparing the input the the national trust 
+     * places title. It then returns the filtered data.
+     */
     const handleSearch = (text) => {
         onChangeText(text);
         let items = localData;

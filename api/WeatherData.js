@@ -1,5 +1,6 @@
 /**
- * @fileoverview This file is for the weather api that gets the current weather for the place
+ * @fileoverview This file is for weather api that gets the current weather for the selected place.
+ * It then displays its current temperature and a icon for its current weather 
  */
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
@@ -17,6 +18,13 @@ const WeatherData = ({ lat, lon }) => {
     // console.log(`latitiude${lat}`);
     // console.log(`longtitude${lon}`);
 
+    /**
+     * @param {lat, lon} The places latitude and longtitude from the national trust api
+     * 
+     * The function fetches the data for the places by its location. It then sets the temperature
+     * from the data returned by the open weather map api. It also sets an icon depending of the 
+     * places returned condition.
+     */
     function fetchWeather(lat, lon) {
         fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${apiKey}&units=metric`)
             .then((response) => response.json())

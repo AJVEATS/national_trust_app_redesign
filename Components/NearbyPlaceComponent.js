@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This file represets the NearbyPlace component which displays a list 
+ * of two random places. It gets the data from the local JSON national trust data.
+ * 
+ */
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';

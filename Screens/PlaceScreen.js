@@ -1,7 +1,11 @@
 /**
  * @fileoverview This file represets the PlaceScreen which displays the PlaceButtonComponent,
  * PlaceInfoComponent, PlaceMapView and NearbyPlaceComponent. It displays all of the information
- * about the place that was select from the ListViewComponent
+ * about the place that was select from the ListViewComponent.
+ * 
+ * It takes the key passed in from the ListViewComponent as fetches its data from the local 
+ * national trust data
+ * 
  */
 import React from 'react'
 import { StyleSheet, ScrollView, View, Image } from 'react-native'
