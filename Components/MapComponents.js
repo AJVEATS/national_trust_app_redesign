@@ -1,6 +1,7 @@
 /**
- * @fileoverview This file represets the map component which displays the 
- * location of all national trust places on a map using MapView and Marker
+ * @fileoverview This file represets the map component which contains a google auto-complete
+ * search bar for searching through locations on the MapView. The MapView displays a Marker
+ * for every place from the local version of the national trust JSON data
  */
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';

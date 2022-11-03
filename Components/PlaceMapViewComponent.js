@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file represents the PlaceMapViewComponent which displays a MapView 
+ * with a Marker of the place's location.
+ */
 import { StyleSheet, View } from 'react-native'
 import MapView, { Marker } from "react-native-maps";
 import React from 'react'

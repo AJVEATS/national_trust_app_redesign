@@ -1,5 +1,9 @@
 /**
- * @fileoverview This file displays all of the information for each place
+ * @fileoverview This file represents the PlaceInfoComponent which displays
+ * information for each place including the Title, subTitle and description.
+ * If the place has an opening status or an activity list it will display them.
+ * The file calls the fetchWeather() function and passes the places location to 
+ * get its current weather.
  */
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
@@ -44,7 +48,6 @@ const PlaceInfoComponent = (place) => {
 export default PlaceInfoComponent
 
 const styles = StyleSheet.create({
-
     placeTitle: {
         width: '100%',
         color: colors.titleText,

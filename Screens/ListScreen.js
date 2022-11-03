@@ -12,6 +12,10 @@ const ListScreen = () => {
     const [value, onChangeText] = useState('')
     const [localData, setlocalData] = useState({})
 
+    /**
+     * This function is for fetching the data from the national trust places
+     * api and converting the response into a JSON object.
+     */
     useEffect(() => {
         fetch('https://www.nationaltrust.org.uk/search/data/all-places')
             .then((response) => response.json())
@@ -35,7 +39,6 @@ const ListScreen = () => {
     const handleSearch = (text) => {
         onChangeText(text);
         let items = localData;
-        // console.log(items[1]);
         let newData = items;
 
         if (text) {

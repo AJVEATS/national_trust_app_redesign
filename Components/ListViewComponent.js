@@ -13,7 +13,7 @@ const ListViewComponent = (data) => {
     const navigation = useNavigation();
 
     /**
-     * Changes the screen on button press
+     * Changes the screen on TouchableOpacity onPress
      * 
      * @param {item} The palces data 
      */
@@ -21,6 +21,12 @@ const ListViewComponent = (data) => {
         navigation.push('PlaceScreen', { data: item.id });
     }
 
+    /**
+     * The render item for the flatlist. It displays a card with each place's image,
+     * title and subTitle with the data national trust api data passed in from listScreen
+     * 
+     * @param {item} The palce's data 
+     */
     const placeCard = ({ item }) => {
         return (
             <TouchableOpacity key={item} style={styles.placeCard} onPress={() => changeScreenOnPress(item)} >

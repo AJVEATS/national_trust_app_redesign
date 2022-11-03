@@ -13,7 +13,7 @@ import { StyleSheet, ScrollView, View, Image } from 'react-native'
 import '../data/nt_places.json';
 import NearbyPlaceComponent from '../Components/NearbyPlaceComponent';
 import PlaceButtonComponent from '../Components/PlaceButtonComponent';
-import PlaceMapView from '../Components/PlaceMapView';
+import PlaceMapViewComponent from '../Components/PlaceMapViewComponent';
 import PlaceInfoComponent from '../Components/PlaceInfoComponent';
 
 const PlaceScreen = (item) => {
@@ -29,7 +29,7 @@ const PlaceScreen = (item) => {
             </View>
             <View style={styles.placeInfoContainer}>
                 <PlaceInfoComponent data={place} />
-                <PlaceMapView latitude={place.location.latitude} longitude={place.location.longitude} />
+                <PlaceMapViewComponent latitude={place.location.latitude} longitude={place.location.longitude} />
                 <NearbyPlaceComponent />
             </View>
         </ScrollView>

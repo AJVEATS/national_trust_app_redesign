@@ -1,8 +1,8 @@
 /**
- * @fileoverview This file represets the bottom tab navigator used to navigate between the MapScreen
- * and the ListScreen.
+ * @fileoverview This file represets the BottomTabNavigator which displays a bottom
+ * tab navigator and is used to navigate between 2 stack navigators the MapNavigator and
+ * the ListNavigator.
  */
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../colors';

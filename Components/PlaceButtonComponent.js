@@ -1,6 +1,6 @@
 /**
- * @fileoverview This file represets the buttons for the PlaceScreen, this includes a back button
- * and a favourite button.
+ * @fileoverview This file represets the PlaceButtonComponent this includes a back button to navigate to
+ * the previous screen and a favourite button.
  */
 import { StyleSheet, View, Pressable } from 'react-native'
 import React from 'react'

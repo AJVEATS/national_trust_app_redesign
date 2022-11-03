@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file has all of the application colours
+ * @fileoverview This file has all of the application's colours
  */
 export default {
     ntGreen: '#007A3B',

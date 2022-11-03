@@ -1,6 +1,6 @@
 /**
- * @fileoverview This file represets the NearbyPlace component which displays a list 
- * of two random places. It gets the data from the local JSON national trust data.
+ * @fileoverview This file represets the NearbyPlace component which displays two random places.
+ * It gets the data of two random places from the local JSON national trust data.
  * 
  */
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
@@ -18,6 +18,11 @@ const NearbyPlaceComponent = () => {
     const nearby1 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
     const nearby2 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
 
+    /**
+     * Changes the screen on TouchableOpacity onPress
+     * 
+     * @param {item} The nearby palce's data 
+     */
     const nearbyPlaceOnPress = (item) => {
         navigation.push('PlaceScreen', { data: item.id });
     }
