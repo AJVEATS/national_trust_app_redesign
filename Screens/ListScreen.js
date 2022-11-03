@@ -28,7 +28,7 @@ const ListScreen = () => {
     const handleSearch = (text) => {
         onChangeText(text);
         let items = localData;
-        console.log(items[1]);
+        // console.log(items[1]);
         let newData = items;
 
         if (text) {
@@ -53,11 +53,12 @@ const ListScreen = () => {
                 <View style={styles.listSearchContainer}>
                     <TextInput
                         style={styles.listSearch}
+                        inlineImageLeft="search_icon"
                         onChangeText={(text) => handleSearch(text)}
                         keyboardType="default"
                         value={value}
                         underlineColorAndroid="transparent"
-                        placeholder="Search by name"
+                        placeholder="🔍 Search places"
                     />
                 </View>
                 <View style={styles.listScrollContainer}>

@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../colors';
 import ListNavigator from './ListNavigator';
 import MapNavigator from './MapNavigator';
-import TestScreen from '../Screens/TestScreen';
 
 const BottomTabNavigator = () => {
     const Tab = createBottomTabNavigator();
@@ -34,7 +33,6 @@ const BottomTabNavigator = () => {
                 tabBarInactiveTintColor: 'gray',
             })}>
             <Tab.Screen name="List" component={ListNavigator} />
-            <Tab.Screen name="Test" component={TestScreen} />
             <Tab.Screen name="Map" component={MapNavigator} />
         </Tab.Navigator>
     );
