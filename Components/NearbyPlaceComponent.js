@@ -8,10 +8,10 @@ const NearbyPlaceComponent = () => {
 
     const nationalTrustPlaces = require('../data/nt_places.json');
     const navigation = useNavigation();
-    var keys = Object.keys(nationalTrustPlaces);
+    const keys = Object.keys(nationalTrustPlaces);
+
     const nearby1 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
     const nearby2 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
-
 
     const nearbyPlaceOnPress = (item) => {
         navigation.push('PlaceScreen', { data: item.id });
@@ -44,18 +44,18 @@ export default NearbyPlaceComponent
 
 const styles = StyleSheet.create({
     nearby: {
-        paddingVertical: 10
+        paddingVertical: 10,
     },
     nearbyListTitle: {
         fontSize: 22,
-        borderBottomColor: 'black'
+        borderBottomColor: 'black',
     },
     nearbyPlaces: {
         flex: 1,
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%'
+        width: '100%',
     },
     nearbyPlace: {
         width: '100%',

@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'serif',
     },
-    listSearchContainer: {},
     listSearch: {
         backgroundColor: colors.white,
         height: 50,

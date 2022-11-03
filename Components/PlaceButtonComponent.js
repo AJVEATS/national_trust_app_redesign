@@ -11,7 +11,6 @@ import colors from '../colors';
 
 const PlaceButtonComponent = () => {
     const navigation = useNavigation();
-
     const [heart, setHeart] = React.useState(false)
 
     return (
@@ -27,7 +26,6 @@ const PlaceButtonComponent = () => {
 }
 
 export default PlaceButtonComponent
-
 
 const styles = StyleSheet.create({
     backPressable: {

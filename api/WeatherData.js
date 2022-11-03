@@ -12,7 +12,6 @@ const WeatherData = ({ lat, lon }) => {
     let apiKey = "c615be41df83e8620d84a99ecba2db62";
 
     const [temperature, setTemperature] = useState("");
-    // const [condition, setCondition] = useState("");
     const [weatherIcon, setWeatherIcon] = useState("");
 
     // console.log(`latitiude${lat}`);
@@ -23,17 +22,22 @@ const WeatherData = ({ lat, lon }) => {
             .then((response) => response.json())
             .then((responseJSON) => {
                 setTemperature(responseJSON.main.temp);
-                // setCondition(responseJSON.weather[0].main)
                 if (responseJSON.weather[0].main === "Fog") {
-                    setWeatherIcon(<Ionicons name={"cloud"} color={colors.ntGray} size={32} />)
+                    setWeatherIcon(<Ionicons name={"cloud"} color={colors.ntGray} size={24} />)
                 } else if (responseJSON.weather[0].main === "Rain") {
-                    setWeatherIcon(<Ionicons name={"rainy-outline"} size={32} />)
+                    setWeatherIcon(<Ionicons name={"rainy-outline"} size={24} />)
                 } else if (responseJSON.weather[0].main === "Clear") {
-                    setWeatherIcon(<Ionicons name={"sunny-outline"} size={32} />)
+                    setWeatherIcon(<Ionicons name={"sunny-outline"} size={24} />)
                 } else if (responseJSON.weather[0].main === "Clouds") {
-                    setWeatherIcon(<Ionicons name="cloudy-outline" size={32} />)
+                    setWeatherIcon(<Ionicons name="cloudy-outline" size={24} />)
                 } else if (responseJSON.weather[0].main === "Snow") {
-                    setWeatherIcon(<Ionicons name="snow-outline" size={32} />)
+                    setWeatherIcon(<Ionicons name="snow-outline" size={24} />)
+                } else if (responseJSON.weather[0].main === "Drizzle") {
+                    setWeatherIcon(<Ionicons name="water-outline" size={24} />)
+                } else if (responseJSON.weather[0].main === "Thunderstorm") {
+                    setWeatherIcon(<Ionicons name="thunderstorm-outline" size={24} />)
+                } else {
+                    setWeatherIcon(<Ionicons name="thermometer-outline" size={24} />)
                 }
             });
     }
@@ -49,7 +53,6 @@ const WeatherData = ({ lat, lon }) => {
         getData();
     }, []);
 
-
     return (
         <View style={styles.weatherInfo}>
             <View style={styles.weatherIcon}>{weatherIcon}</View>
@@ -64,10 +67,11 @@ const styles = StyleSheet.create({
     weatherInfo: {
         flex: 1,
         flexDirection: 'row',
-        paddingBottom: 10,
+        marginBottom: 10,
     },
     weatherIcon: {
         marginRight: 10,
+        alignSelf: 'center'
     },
     weatherTemp: {
         fontSize: 22,

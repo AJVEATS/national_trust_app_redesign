@@ -8,11 +8,8 @@ import WeatherData from '../api/WeatherData'
 
 const PlaceInfoComponent = (place) => {
 
-    // const { latitude, longitude } = place.data.location
     const latitude = place.data.location.latitude;
     const longitude = place.data.location.longitude;
-    // console.log("placeInfo lat " + latitude);
-    // console.log("placeInfo lon " + longitude);
 
     const hasActivities = (activities) => {
         if (activities != null) {

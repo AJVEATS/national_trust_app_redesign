@@ -4,7 +4,7 @@
  */
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Dimensions, Button, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Dimensions, Text, View, Pressable } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
 import colors from '../colors';
 import '../data/nt_places.json';
@@ -42,8 +42,8 @@ const MapComponent = () => {
     const [region, setRegion] = useState({
         latitude: 50.736055,
         longitude: -1.892924,
-        latitudeDelta: 3,
-        longitudeDelta: 3,
+        latitudeDelta: 1.5,
+        longitudeDelta: 1.5,
     })
 
     let nationalTrustPlaces = require('../data/nt_places.json');
@@ -60,7 +60,6 @@ const MapComponent = () => {
                 autoFocus={true}
                 fetchDetails={true}
                 onPress={(data, details = null) => {
-                    // 'details' is provided when fetchDetails = true
                     console.log(details.geometry);
                     setRegion({
                         latitude: details.geometry.location.lat,
@@ -80,7 +79,6 @@ const MapComponent = () => {
                     }
                 }}
             />
-
             <MapView
                 style={styles.map}
                 region={region}

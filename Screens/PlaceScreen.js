@@ -3,7 +3,6 @@
  * PlaceInfoComponent, PlaceMapView and NearbyPlaceComponent. It displays all of the information
  * about the place that was select from the ListViewComponent
  */
-
 import React from 'react'
 import { StyleSheet, ScrollView, View, Image } from 'react-native'
 

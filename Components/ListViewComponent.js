@@ -2,7 +2,7 @@
  * @fileoverview This file represets the ListViewComponent which displays the flatlist of
  * all of the national trust places
  */
-import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -40,17 +40,52 @@ const ListViewComponent = (data) => {
             data={Object.values(data)}
             renderItem={placeCard}
             keyExtractor={(item) => item.id}
+            ListEmptyComponent={() => {
+                return (
+                    <Text style={styles.noItems}>No places</Text>
+                )
+            }}
+            ListFooterComponent={() => {
+                return (
+                    <View style={styles.flatListFooter}></View>
+                )
+            }}
+            ItemSeparatorComponent={() => {
+                return (
+                    <View style={styles.flatListSeperator}></View>
+                )
+            }}
+            ListHeaderComponent={() => {
+                return (
+                    <View style={styles.flatListHeader}></View>
+                )
+            }}
         />
     );
 }
 
-
 export default ListViewComponent
 
 const styles = StyleSheet.create({
+    noItems: {
+        alignSelf: 'center',
+        marginTop: 20,
+        fontSize: 18,
+        color: colors.ntGray,
+        opacity: 0.8,
+    },
+    flatListHeader: {
+        height: 7,
+    },
+    flatListFooter: {
+        height: 250,
+    },
+    flatListSeperator: {
+        height: 7,
+    },
     placeCard: {
         width: '100%',
-        marginTop: 7,
+        // marginTop: 7,
         height: 275,
         alignItems: 'center',
     },
