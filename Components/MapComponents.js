@@ -6,7 +6,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Dimensions, Text, View, Pressable } from 'react-native';
-import MapView, { Callout, Marker } from "react-native-maps";
+import { Callout, Marker } from "react-native-maps";
+import MapView from 'react-native-map-clustering';
 import colors from '../colors';
 import '../data/nt_places.json';
 
@@ -82,7 +83,9 @@ const MapComponent = () => {
             />
             <MapView
                 style={styles.map}
-                region={region}
+                clusterColor={colors.ntGreen}
+                clusterTextColor={colors.white}
+                initialRegion={region}
                 showsUserLocation={true}
                 loadingEnabled={true}>
                 {Object.values(nationalTrustPlaces).map(item => {
