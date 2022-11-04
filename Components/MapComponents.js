@@ -80,12 +80,6 @@ const MapComponent = () => {
                 onPress={(data, details = null) => {
                     // console.log(details.geometry);
                     animateToRegion(details.geometry.location.lat, details.geometry.location.lng)
-                    // setRegion({
-                    //     latitude: details.geometry.location.lat,
-                    //     longitude: details.geometry.location.lng,
-                    //     longitudeDelta: 0.09,
-                    //     latitudeDelta: 0.09,
-                    // })
                 }}
                 query={{
                     key: 'AIzaSyCRi_qZjvUzVaQbUD_9NaWvTf_SJTQuzok',
