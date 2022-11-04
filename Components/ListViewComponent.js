@@ -15,7 +15,7 @@ const ListViewComponent = (data) => {
     /**
      * Changes the screen on TouchableOpacity onPress
      * 
-     * @param {item} The palces data 
+     * @param {item} The selected place's data
      */
     const changeScreenOnPress = (item) => {
         navigation.push('PlaceScreen', { data: item.id });
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     },
     placeCard: {
         width: '100%',
-        // marginTop: 7,
         height: 275,
         alignItems: 'center',
     },

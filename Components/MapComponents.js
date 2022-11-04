@@ -4,7 +4,7 @@
  * for every place from the local version of the national trust JSON data
  */
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { StyleSheet, Dimensions, Text, View, Pressable } from 'react-native';
 import { Callout, Marker } from "react-native-maps";
 import MapView from 'react-native-map-clustering';
@@ -22,17 +22,28 @@ const MapComponent = () => {
 
     useEffect(() => {
         (async () => {
-
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 setErrorMsg('Permission to access location was denied');
                 return;
             }
-
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
         })();
     }, []);
+
+    const mapRef = useRef();
+
+    const animateToRegion = (latitude, longitude) => {
+        let region = {
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.09,
+            longitudeDelta: 0.09,
+        };
+
+        mapRef.current.animateToRegion(region, 2000);
+    };
 
     let text = 'Waiting..';
     if (errorMsg) {
@@ -51,6 +62,11 @@ const MapComponent = () => {
     let nationalTrustPlaces = require('../data/nt_places.json');
     const navigation = useNavigation();
 
+    /**
+     * Changes the screen on TouchableOpacity onPress
+     * 
+     * @param {item} The selected places id 
+     */
     const changeScreenOnPress = (item) => {
         navigation.push('PlaceScreen', { data: item.id });
     }
@@ -62,13 +78,14 @@ const MapComponent = () => {
                 autoFocus={true}
                 fetchDetails={true}
                 onPress={(data, details = null) => {
-                    console.log(details.geometry);
-                    setRegion({
-                        latitude: details.geometry.location.lat,
-                        longitude: details.geometry.location.lng,
-                        longitudeDelta: 0.09,
-                        latitudeDelta: 0.09,
-                    })
+                    // console.log(details.geometry);
+                    animateToRegion(details.geometry.location.lat, details.geometry.location.lng)
+                    // setRegion({
+                    //     latitude: details.geometry.location.lat,
+                    //     longitude: details.geometry.location.lng,
+                    //     longitudeDelta: 0.09,
+                    //     latitudeDelta: 0.09,
+                    // })
                 }}
                 query={{
                     key: 'AIzaSyCRi_qZjvUzVaQbUD_9NaWvTf_SJTQuzok',
@@ -83,6 +100,7 @@ const MapComponent = () => {
             />
             <MapView
                 style={styles.map}
+                ref={mapRef}
                 clusterColor={colors.ntGreen}
                 clusterTextColor={colors.white}
                 initialRegion={region}
