@@ -10,16 +10,14 @@ import colors from '../colors';
 import '../data/nt_places.json';
 
 const NearbyPlaceComponent = () => {
-
     const nationalTrustPlaces = require('../data/nt_places.json');
     const navigation = useNavigation();
     const keys = Object.keys(nationalTrustPlaces);
-
     const nearby1 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
     const nearby2 = nationalTrustPlaces[keys[keys.length * Math.random() << 0]];
-
     /**
-     * Changes the screen on TouchableOpacity onPress
+     * Changes the screen on the TouchableOpacity onPress to the PlaceScreen for the 
+     * selected item
      * 
      * @param {item} The nearby palce's data 
      */

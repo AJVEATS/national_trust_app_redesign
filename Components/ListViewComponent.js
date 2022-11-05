@@ -5,13 +5,10 @@
 import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-
 import colors from '../colors';
 
 const ListViewComponent = (data) => {
-
     const navigation = useNavigation();
-
     /**
      * Changes the screen on TouchableOpacity onPress
      * 
@@ -20,7 +17,6 @@ const ListViewComponent = (data) => {
     const changeScreenOnPress = (item) => {
         navigation.push('PlaceScreen', { data: item.id });
     }
-
     /**
      * The render item for the flatlist. It displays a card with each place's image,
      * title and subTitle with the data national trust api data passed in from listScreen

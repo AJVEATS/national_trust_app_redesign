@@ -17,7 +17,6 @@ import PlaceMapViewComponent from '../Components/PlaceMapViewComponent';
 import PlaceInfoComponent from '../Components/PlaceInfoComponent';
 
 const PlaceScreen = (item) => {
-
     const nationalTrustPlaces = require('../data/nt_places.json');
     const place = nationalTrustPlaces[item.route.params.data];
 

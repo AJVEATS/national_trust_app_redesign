@@ -88,8 +88,16 @@ const MapComponent = () => {
                 }}
                 styles={{
                     container: {
-                        flex: 0, position: 'absolute', zIndex: 100, width: '90%', top: 10, alignSelf: 'center'
-                    }
+                        flex: 0,
+                        position: 'absolute',
+                        zIndex: 100,
+                        width: '95%',
+                        top: 10,
+                        alignSelf: 'center',
+                    },
+                    poweredContainer: {
+                        display: 'none'
+                    },
                 }}
             />
             <MapView

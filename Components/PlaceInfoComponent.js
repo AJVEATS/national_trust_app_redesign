@@ -11,10 +11,15 @@ import colors from '../colors'
 import WeatherData from '../api/WeatherData'
 
 const PlaceInfoComponent = (place) => {
-
     const latitude = place.data.location.latitude;
     const longitude = place.data.location.longitude;
 
+    /**
+     * Checks if the place's activityTagsAsCSV is not null, if it isn't null
+     * it displays the place's activities.
+     * 
+     * @param {activities} The place's activityTagsAsCSV item  
+     */
     const hasActivities = (activities) => {
         if (activities != null) {
             return (
@@ -23,6 +28,12 @@ const PlaceInfoComponent = (place) => {
         }
     }
 
+    /**
+     * Checks if the place's openingTimeStatus is not null, if it isn't null
+     * it displays the place's openingTimeStatus.
+     * 
+     * @param {openingStatus} The place's openingTimeStatius item  
+     */
     const hasOpeningTime = (openingStatus) => {
         if (openingStatus != null) {
             return (

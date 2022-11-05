@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file represets the ListScreen which displays the title and includes a
+ * @fileoverview This file represets the ListScreen which displays the ListTitleComponent and includes a
  * filtering text input for the list of all places which is displayed with the ListViewComponent.
  */
 import { StyleSheet, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
@@ -50,7 +50,6 @@ const ListScreen = () => {
                 return itemData.indexOf(textData) > -1;
             });
         }
-
         setnationalData(newData);
     }
 
@@ -70,9 +69,7 @@ const ListScreen = () => {
                         placeholder="🔍 Search places"
                     />
                 </View>
-                <View style={styles.listScrollContainer}>
-                    <ListViewComponent {...nationalData} />
-                </View>
+                <ListViewComponent {...nationalData} />
             </View >
         </SafeAreaView>
     )
@@ -83,9 +80,6 @@ export default ListScreen
 const styles = StyleSheet.create({
     listViewContainer: {
         flex: 1,
-    },
-    listContainer: {
-        width: '100%',
     },
     listSearch: {
         backgroundColor: colors.white,

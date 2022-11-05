@@ -1,3 +1,6 @@
+/**
+ * @fileoverview This file represets the ListTitleComponenet which is the title section for the ListScreen
+ */
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import colors from '../colors'

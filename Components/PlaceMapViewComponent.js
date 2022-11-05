@@ -6,14 +6,14 @@ import { StyleSheet, View } from 'react-native'
 import MapView, { Marker } from "react-native-maps";
 import React from 'react'
 
-const PlaceMapView = (props) => {
+const PlaceMapView = (data) => {
     return (
         <View style={styles.mapViewContainer}>
             <MapView
                 style={styles.mapView}
                 initialRegion={{
-                    latitude: props.latitude,
-                    longitude: props.longitude,
+                    latitude: data.latitude,
+                    longitude: data.longitude,
                     latitudeDelta: 0.09,
                     longitudeDelta: 0.04,
                 }}
@@ -22,8 +22,8 @@ const PlaceMapView = (props) => {
                 loadingEnabled={true}>
                 <Marker
                     coordinate={{
-                        latitude: props.latitude,
-                        longitude: props.longitude
+                        latitude: data.latitude,
+                        longitude: data.longitude
                     }}
                 />
             </MapView>
