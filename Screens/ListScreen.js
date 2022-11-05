@@ -1,11 +1,12 @@
 /**
- * @fileoverview This file represets the ListScreen which displays the title and includes the a
- * filtering text input for the ListViewComponent.
+ * @fileoverview This file represets the ListScreen which displays the title and includes a
+ * filtering text input for the list of all places which is displayed with the ListViewComponent.
  */
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
+import { StyleSheet, View, SafeAreaView, StatusBar, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import ListViewComponent from '../Components/ListViewComponent';
 import colors from '../colors';
+import ListTitleComponent from '../Components/ListTitleComponent';
 
 const ListScreen = () => {
     const [nationalData, setnationalData] = useState({})
@@ -57,9 +58,7 @@ const ListScreen = () => {
         <SafeAreaView style={styles.listViewContainer}>
             <StatusBar hidden />
             <View style={styles.listContainer}>
-                <View style={styles.listTitleContainer}>
-                    <Text style={styles.listTitle}>National Trust</Text >
-                </View >
+                <ListTitleComponent />
                 <View style={styles.listSearchContainer}>
                     <TextInput
                         style={styles.listSearch}
@@ -87,17 +86,6 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         width: '100%',
-    },
-    listTitleContainer: {
-        backgroundColor: colors.ntGreen,
-        width: '100%',
-        alignItems: 'center',
-    },
-    listTitle: {
-        color: 'white',
-        marginVertical: 20,
-        fontSize: 24,
-        fontFamily: 'serif',
     },
     listSearch: {
         backgroundColor: colors.white,
