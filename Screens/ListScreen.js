@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import ListViewComponent from '../Components/ListViewComponent';
 import colors from '../colors';
 import ListTitleComponent from '../Components/ListTitleComponent';
+import '../data/nt_places.json';
 
 const ListScreen = () => {
     const [nationalData, setnationalData] = useState({})
@@ -18,16 +19,19 @@ const ListScreen = () => {
      * api and converting the response into a JSON object.
      */
     useEffect(() => {
-        fetch('https://www.nationaltrust.org.uk/search/data/all-places')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                // console.log(responseJson);
-                setnationalData(Object.values(responseJson));
-                setlocalData(Object.values(responseJson));
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // fetch('https://www.nationaltrust.org.uk/search/data/all-places')
+        //     .then((response) => response.json())
+        //     .then((responseJson) => {
+        //         // console.log(responseJson);
+        //         setnationalData(Object.values(responseJson));
+        //         setlocalData(Object.values(responseJson));
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
+        const nationalTrustPlaces = require('../data/nt_places.json');
+        setnationalData(Object.values(nationalTrustPlaces));
+        setlocalData(Object.values(nationalTrustPlaces));
     }, []);
 
     /**
