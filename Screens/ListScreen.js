@@ -19,6 +19,7 @@ const ListScreen = () => {
      * version of the national trust all places API data 
      */
     useEffect(() => {
+        // !!!! Stopped using the all places API data as it no longer exists, now uses the local JSON version.
         // fetch('https://www.nationaltrust.org.uk/search/data/all-places')
         //     .then((response) => response.json())
         //     .then((responseJson) => {
