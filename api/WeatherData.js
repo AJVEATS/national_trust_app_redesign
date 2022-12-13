@@ -10,7 +10,7 @@ import colors from '../colors';
 
 const WeatherData = ({ lat, lon }) => {
 
-    let apiKey = "c615be41df83e8620d84a99ecba2db62";
+    let apiKey = "##############################";
 
     const [temperature, setTemperature] = useState("");
     const [weatherIcon, setWeatherIcon] = useState("");
