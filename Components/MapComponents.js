@@ -82,7 +82,7 @@ const MapComponent = () => {
                     animateToRegion(details.geometry.location.lat, details.geometry.location.lng)
                 }}
                 query={{
-                    key: 'AIzaSyCRi_qZjvUzVaQbUD_9NaWvTf_SJTQuzok',
+                    key: '##############################################',
                     language: 'en',
                     components: 'country:uk'
                 }}
